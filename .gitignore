@@ -1,0 +1,88 @@
+# ARQUIVOS DE BUILD #
+
+HELP.md
+target/
+build/
+tmp/
+*.tmp
+
+# MAVEN *
+
+.mvn/wrapper/maven-wrapper.jar
+.mvn/wrapper/maven-wrapper.properties
+.mnv/timing.properties
+
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+# GRADLE #
+
+.gradle/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+# LOGS #
+
+*.log
+logs/
+spring.log
+
+# CONF. E ARQ. SENSÍVEIS #
+.env
+*.env
+*.key
+*.pem
+*.crt
+*.p12
+
+application-*.yml
+apllication-*.yaml
+application-*.properties
+
+!application.properties
+!application-dev.properties
+!application-prod.properties
+
+# INTELLIJ IDEA #
+
+.idea
+*.iws
+*.iml
+*.ipr
+out/
+
+# ECLIPSE / STS #
+
+.apt_generated/
+.classpath
+.factorypath
+.project
+.settings/
+.springBeans
+.sts4-cache/
+
+# NETBEANS #
+
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+# VS CODE #
+
+.vscode/
+
+# WINDOWS #
+
+Thumbs.db
+Desktop.ini
+
+# MAC OS #
+
+.DS_Store
+
+# DOCKER
+
+**/db_data/
+docker-volume/
