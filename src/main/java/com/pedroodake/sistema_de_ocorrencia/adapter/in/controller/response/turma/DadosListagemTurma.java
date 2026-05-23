@@ -9,5 +9,6 @@ public record DadosListagemTurma(
         String nome_turma,
         Turno turno,
         Year ano,
-        Integer semestre) {
+        Integer semestre,
+        boolean ativo) {
 }

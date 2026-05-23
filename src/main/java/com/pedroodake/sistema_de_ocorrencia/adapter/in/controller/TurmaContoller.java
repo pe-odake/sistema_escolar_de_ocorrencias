@@ -4,6 +4,7 @@ import com.pedroodake.sistema_de_ocorrencia.adapter.in.controller.request.turma.
 import com.pedroodake.sistema_de_ocorrencia.adapter.in.controller.request.turma.DadosCadastroTurma;
 import com.pedroodake.sistema_de_ocorrencia.adapter.in.controller.response.turma.DadosDetalhamentoTurma;
 import com.pedroodake.sistema_de_ocorrencia.adapter.in.controller.response.turma.DadosListagemTurma;
+import com.pedroodake.sistema_de_ocorrencia.application.core.usecase.TurmaService;
 import com.pedroodake.sistema_de_ocorrencia.application.port.in.ModelDomainController;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
@@ -30,9 +31,10 @@ public class TurmaContoller implements ModelDomainController<
         Long>  {
     private final TurmaService service;
 
-    public TurmaController(TurmaService turma) {
+    public TurmaContoller(TurmaService service) {
         this.service = service;
     }
+
     @Override
     @PostMapping
     @PreAuthorize("hasAnyRole('PROFESSOR', 'ANALISTA_DE_QUALIDADE', 'COORDENADOR', 'PROFESSOR_ADMINISTRATIVO')")
@@ -51,7 +53,7 @@ public class TurmaContoller implements ModelDomainController<
     @GetMapping
     @PreAuthorize("hasAnyRole('PROFESSOR', 'ANALISTA_DE_QUALIDADE', 'COORDENADOR', 'PROFESSOR_ADMINISTRATIVO')")
     public ResponseEntity<Page<DadosListagemTurma>> listar(
-            @ParameterObject @PageableDefault(size = 10, sort = "nome") Pageable paginacao) {
+            @ParameterObject @PageableDefault(size = 10, sort = "id") Pageable paginacao) {
         return ResponseEntity.ok(service.listarTurmas(paginacao));
     }
 

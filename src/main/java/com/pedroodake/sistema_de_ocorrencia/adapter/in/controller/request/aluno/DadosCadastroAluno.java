@@ -1,17 +1,16 @@
 package com.pedroodake.sistema_de_ocorrencia.adapter.in.controller.request.aluno;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public record DadosCadastroAluno(
-        @NotNull
-        Long id,
-
         @NotBlank
         String nome,
 
-        @NotBlank
-        Date data_nascimento) {
+        @JsonFormat(pattern = "dd/MM/yyyy")
+        @NotNull
+        LocalDate data_nascimento) {
 }

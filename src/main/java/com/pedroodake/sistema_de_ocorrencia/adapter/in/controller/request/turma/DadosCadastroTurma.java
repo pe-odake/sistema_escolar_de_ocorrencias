@@ -12,9 +12,9 @@ public record DadosCadastroTurma(
     @NotNull
     Turno turno,
 
-    @NotBlank
+    @NotNull
     Year ano,
 
-    @NotBlank
+    @NotNull
     Integer semestre) {
 }

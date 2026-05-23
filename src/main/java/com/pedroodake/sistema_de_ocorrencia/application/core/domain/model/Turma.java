@@ -10,13 +10,15 @@ public class Turma {
     private Turno turno;
     private Year ano;
     private Integer semestre;
+    private boolean ativo = true;
 
     public Turma(
             Long id,
             String nome_turma,
             Turno turno,
             Year ano,
-            Integer semestre
+            Integer semestre,
+            boolean ativo
     ) {
         this.id = id;
         this.nome_turma = nome_turma;
@@ -37,12 +39,40 @@ public class Turma {
         return ano;
     }
 
-    public String getTurno() {
+    public Turno getTurno() {
         return turno;
     }
 
     public String getNome_turma() {
         return nome_turma;
+    }
+
+
+    public Boolean getAtivo() {
+        return ativo;
+    }
+
+    public void excluir() {
+        this.ativo = false;
+    }
+
+    public void atualizarInformacoes(
+            String nome_turma,
+            Turno turno,
+            Year ano,
+            Integer semestre) {
+        if (nome_turma != null && !nome_turma.isBlank()) {
+            this.nome_turma = nome_turma;
+        }
+        if (turno != null ) {
+            this.turno = turno;
+        }
+        if (ano != null ) {
+            this.ano = ano;
+        }
+        if (semestre != null ) {
+            this.semestre = semestre;
+        }
     }
 
 }

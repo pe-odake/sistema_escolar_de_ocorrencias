@@ -14,7 +14,8 @@ public class TurmaMapper {
                 dados.nome_turma(),
                 dados.turno(),
                 dados.ano(),
-                dados.semestre()
+                dados.semestre(),
+                true
         );
     }
 
@@ -24,7 +25,8 @@ public class TurmaMapper {
                 turma.getNome_turma(),
                 turma.getTurno(),
                 turma.getAno(),
-                turma.getSemestre()
+                turma.getSemestre(),
+                turma.getAtivo()
         );
     }
 
@@ -34,7 +36,8 @@ public class TurmaMapper {
                 turma.getNome_turma(),
                 turma.getTurno(),
                 turma.getAno(),
-                turma.getSemestre()
+                turma.getSemestre(),
+                turma.getAtivo()
         );
     }
 

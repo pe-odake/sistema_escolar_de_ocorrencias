@@ -1,9 +1,10 @@
 package com.pedroodake.sistema_de_ocorrencia.adapter.in.controller.response.aluno;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public record DadosDetalhamentoAluno(
         Long id,
         String nome,
-        Date data_nascimento) {
+        LocalDate data_nascimento,
+        boolean ativo) {
 }

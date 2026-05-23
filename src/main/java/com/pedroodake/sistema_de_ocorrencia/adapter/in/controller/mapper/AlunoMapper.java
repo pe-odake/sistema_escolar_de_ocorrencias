@@ -12,7 +12,8 @@ public class AlunoMapper {
         return new Aluno(
                 null,
                 dados.nome(),
-                dados.data_nascimento()
+                dados.data_nascimento(),
+                true
         );
     }
 
@@ -28,7 +29,8 @@ public class AlunoMapper {
         return new DadosDetalhamentoAluno(
                 aluno.getId(),
                 aluno.getNome(),
-                aluno.getData_nascimento()
+                aluno.getData_nascimento(),
+                aluno.getAtivo()
         );
     }
 }

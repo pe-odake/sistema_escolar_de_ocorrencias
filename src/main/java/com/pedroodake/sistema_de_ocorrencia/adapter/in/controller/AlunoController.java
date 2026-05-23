@@ -4,6 +4,7 @@ import com.pedroodake.sistema_de_ocorrencia.adapter.in.controller.request.aluno.
 import com.pedroodake.sistema_de_ocorrencia.adapter.in.controller.request.aluno.DadosAtualizacaoAluno;
 import com.pedroodake.sistema_de_ocorrencia.adapter.in.controller.response.aluno.DadosDetalhamentoAluno;
 import com.pedroodake.sistema_de_ocorrencia.adapter.in.controller.response.aluno.DadosListagemAluno;
+import com.pedroodake.sistema_de_ocorrencia.application.core.usecase.AlunoService;
 import com.pedroodake.sistema_de_ocorrencia.application.port.in.ModelDomainController;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;

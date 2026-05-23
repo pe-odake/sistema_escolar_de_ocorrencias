@@ -7,6 +7,7 @@ import java.time.Year;
 
 public record DadosAtualizacaoTurma(
         @NotNull
+        Long id,
         String nome_turma,
         Turno turno,
         Year ano,
