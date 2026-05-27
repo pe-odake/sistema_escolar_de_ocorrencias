@@ -49,7 +49,7 @@ application-*.properties
 *.iws
 *.iml
 *.ipr
-out/
+/out/
 
 # ECLIPSE / STS #
 

@@ -16,6 +16,7 @@ public class Aluno {
         this.id = id;
         this.nome = nome;
         this.data_nascimento = data_nascimento;
+        this.ativo = ativo;
     }
 
     public Long getId() {

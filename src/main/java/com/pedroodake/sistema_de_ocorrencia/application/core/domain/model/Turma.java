@@ -25,6 +25,7 @@ public class Turma {
         this.turno = turno;
         this.ano = ano;
         this.semestre = semestre;
+        this.ativo = ativo;
     }
 
     public Long getId() {
