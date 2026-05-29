@@ -38,15 +38,15 @@ public class MatriculaService {
 
     @Transactional
     public DadosDetalhamentoMatricula cadastrarMatricula(DadosCadastroMatricula dados) {
-        if(!alunoRepository.existsById(dados.aluno().getId())) {
+        if(!alunoRepository.existsById(dados.idAluno())) {
             throw new AlunoNotFoundException("ID do aluno informado não existe! : (");
         }
-        if(!turmaRepository.existsById(dados.turma().getId())) {
+        if(!turmaRepository.existsById(dados.idTurma())) {
             throw new TurmaNotFoundException("ID da turma informada não existe! : (");
         }
 
-        Aluno aluno = alunoRepository.getReferenceById(dados.aluno().getId());
-        Turma turma = turmaRepository.getReferenceById(dados.turma().getId());
+        Aluno aluno = alunoRepository.getReferenceById(dados.idAluno());
+        Turma turma = turmaRepository.getReferenceById(dados.idTurma());
 
         Matricula matricula = new Matricula(
                 null,

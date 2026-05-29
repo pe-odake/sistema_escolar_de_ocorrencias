@@ -1,12 +1,12 @@
 -- CRIAÇÃO INICIAL DAS TABELAS DE USUARIO
 
-create table usuario (
-    id bigserial not null,
-    nome varchar(70) not null,
-    login varchar(100) not null unique,
-    senha varchar(255) not null,
-    ativo boolean not null default true,
-    perfil varchar(25) not null,
+CREATE TABLE usuario (
+    id BIGSERIAL NOT NULL,
+    nome VARCHAR(70) NOT NULL,
+    login VARCHAR(100) NOT NULL UNIQUE,
+    senha VARCHAR(255) NOT NULL,
+    ativo BOOLEAN NOT NULL DEFAULT TRUE,
+    perfil VARCHAR(25) NOT NULL,
 
-    primary key(id)
+    PRIMARY KEY(id)
 );
