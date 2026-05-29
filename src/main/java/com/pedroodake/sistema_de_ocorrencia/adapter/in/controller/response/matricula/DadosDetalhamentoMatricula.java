@@ -11,10 +11,6 @@ public record DadosDetalhamentoMatricula (
         Long id,
         Aluno aluno,
         Turma turma,
-        String nome_turma,
-        Turno turno,
-        Year ano,
-        Integer semestre,
         boolean ativo) {
 
     public DadosDetalhamentoMatricula(Matricula matricula) {
@@ -22,10 +18,6 @@ public record DadosDetalhamentoMatricula (
             matricula.getId(),
             matricula.getAluno(),
             matricula.getTurma(),
-            matricula.getTurma().getNome_turma(),
-            matricula.getTurma().getTurno(),
-            matricula.getTurma().getAno(),
-            matricula.getTurma().getSemestre(),
             matricula.isAtivo()
         );
     }

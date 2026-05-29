@@ -23,11 +23,7 @@ public class MatriculaMapper {
         return new DadosListagemMatricula(
                 matricula.getId(),
                 matricula.getAluno(),
-                matricula.getTurma(),
-                matricula.getTurma().getNome_turma(),
-                matricula.getTurma().getTurno(),
-                matricula.getTurma().getAno(),
-                matricula.getTurma().getSemestre()
+                matricula.getTurma()
         );
     }
 
@@ -36,10 +32,6 @@ public class MatriculaMapper {
                 matricula.getId(),
                 matricula.getAluno(),
                 matricula.getTurma(),
-                matricula.getTurma().getNome_turma(),
-                matricula.getTurma().getTurno(),
-                matricula.getTurma().getAno(),
-                matricula.getTurma().getSemestre(),
                 matricula.isAtivo()
         );
     }
