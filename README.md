@@ -32,7 +32,7 @@ Focados em análise de dados e acompanhamento geral.
 
 * **Linguagem:** Java
 * **Framework Backend:** Spring Boot
-* **Banco de Dados:** MySQL
+* **Banco de Dados:** PostgreSQL
 
 ---
 
