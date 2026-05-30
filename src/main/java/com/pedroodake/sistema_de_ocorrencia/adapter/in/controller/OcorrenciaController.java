@@ -1,10 +1,9 @@
 package com.pedroodake.sistema_de_ocorrencia.adapter.in.controller;
 
-import com.pedroodake.sistema_de_ocorrencia.adapter.in.controller.request.turma.DadosAtualizacaoTurma;
-import com.pedroodake.sistema_de_ocorrencia.adapter.in.controller.request.turma.DadosCadastroTurma;
-import com.pedroodake.sistema_de_ocorrencia.adapter.in.controller.response.turma.DadosDetalhamentoTurma;
-import com.pedroodake.sistema_de_ocorrencia.adapter.in.controller.response.turma.DadosListagemTurma;
-import com.pedroodake.sistema_de_ocorrencia.application.core.usecase.TurmaService;
+import com.pedroodake.sistema_de_ocorrencia.adapter.in.controller.request.ocorrencia.DadosRegistroOcorrencia;
+import com.pedroodake.sistema_de_ocorrencia.adapter.in.controller.response.ocorrencia.DadosDetalhamentoOcorrencia;
+import com.pedroodake.sistema_de_ocorrencia.adapter.in.controller.response.ocorrencia.DadosListagemOcorrencia;
+import com.pedroodake.sistema_de_ocorrencia.application.core.usecase.OcorrenciaService;
 import com.pedroodake.sistema_de_ocorrencia.application.port.in.ModelDomainController;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
@@ -20,30 +19,29 @@ import org.springframework.web.util.UriComponentsBuilder;
 import java.net.URI;
 
 @RestController
-@RequestMapping("/turmas")
+@RequestMapping("/ocorrencias")
 @SecurityRequirement(name = "bearer-key")
-public class TurmaContoller implements ModelDomainController<
-        DadosCadastroTurma,
-        DadosListagemTurma,
-        DadosAtualizacaoTurma,
+public class OcorrenciaController implements ModelDomainController<
+        DadosRegistroOcorrencia,
+        DadosListagemOcorrencia,
         Void,
-        DadosDetalhamentoTurma,
-        Long>  {
-    private final TurmaService service;
+        Void,
+        DadosDetalhamentoOcorrencia,
+        Long> {
+    private final OcorrenciaService service;
 
-    public TurmaContoller(TurmaService service) {
+    public OcorrenciaController(OcorrenciaService service) {
         this.service = service;
     }
-
     @Override
     @PostMapping
     @PreAuthorize("hasAnyRole('PROFESSOR', 'ANALISTA_DE_QUALIDADE', 'COORDENADOR', 'PROFESSOR_ADMINISTRATIVO')")
-    public ResponseEntity<DadosDetalhamentoTurma> cadastrar(
-            @RequestBody @Valid DadosCadastroTurma dados,
+    public ResponseEntity<DadosDetalhamentoOcorrencia> cadastrar(
+            @RequestBody @Valid DadosCadastroOcorrencia dados,
             UriComponentsBuilder uriBuilder) {
-        DadosDetalhamentoTurma dto = service.cadastrarTurma(dados);
+        DadosDetalhamentoOcorrencia dto = service.cadastrarOcorrencia(dados);
         URI uri = uriBuilder
-                .path("/turmas/{id}")
+                .path("/ocorrencias/{id}")
                 .buildAndExpand(dto.id())
                 .toUri();
         return ResponseEntity.created(uri).body(dto);
@@ -52,32 +50,38 @@ public class TurmaContoller implements ModelDomainController<
     @Override
     @GetMapping
     @PreAuthorize("hasAnyRole('PROFESSOR', 'ANALISTA_DE_QUALIDADE', 'COORDENADOR', 'PROFESSOR_ADMINISTRATIVO')")
-    public ResponseEntity<Page<DadosListagemTurma>> listar(
-            @ParameterObject @PageableDefault(size = 10, sort = "id") Pageable paginacao) {
-        return ResponseEntity.ok(service.listarTurmas(paginacao));
+    public ResponseEntity<Page<DadosListagemOcorrencia>> listar(
+            @ParameterObject @PageableDefault(size = 10) Pageable paginacao) {
+        return ResponseEntity.ok(service.listarOcorrencias(paginacao));
     }
 
     @Override
     @GetMapping("/{id}")
     @PreAuthorize("hasAnyRole('PROFESSOR', 'ANALISTA_DE_QUALIDADE', 'COORDENADOR', 'PROFESSOR_ADMINISTRATIVO')")
-    public ResponseEntity<DadosDetalhamentoTurma> detalhar(
+    public ResponseEntity<DadosDetalhamentoOcorrencia> detalhar(
             @PathVariable Long id) {
-        return ResponseEntity.ok(service.detalharTurma(id));
+        return ResponseEntity.ok(service.detalharOcorrencia(id));
     }
 
     @Override
+    public ResponseEntity<DadosDetalhamentoOcorrencia> atualizar(Void dados) {
+        return null;
+    }
+
+    //  NÃO VEJO NECESSIDADE DE ATUALIZAR, TALVEZ FAZER DEPOIS
+    @Override
     @PutMapping
     @PreAuthorize("hasAnyRole('PROFESSOR', 'ANALISTA_DE_QUALIDADE', 'COORDENADOR', 'PROFESSOR_ADMINISTRATIVO')")
-    public ResponseEntity<DadosDetalhamentoTurma> atualizar(
-            @RequestBody @Valid DadosAtualizacaoTurma dados) {
-        return ResponseEntity.ok(service.atualizarTurma(dados));
+    public ResponseEntity<DadosDetalhamentoOcorrencia> atualizar(
+            @RequestBody @Valid DadosAtualizacaoOcorrencia dados) {
+        return ResponseEntity.ok(service.atualizarOcorrencia(dados));
     }
 
     @Override
     @DeleteMapping("/{id}")
     @PreAuthorize("hasAnyRole('PROFESSOR', 'ANALISTA_DE_QUALIDADE', 'COORDENADOR', 'PROFESSOR_ADMINISTRATIVO')")
     public ResponseEntity<Void> excluir(@PathVariable Long id) {
-        service.excluirTurma(id);
+        service.excluirOcorrencia(id);
         return ResponseEntity.noContent().build();
     }
 

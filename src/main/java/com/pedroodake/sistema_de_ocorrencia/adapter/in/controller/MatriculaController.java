@@ -41,10 +41,9 @@ public class MatriculaController implements ModelDomainController<
             UriComponentsBuilder uriBuilder) {
         DadosDetalhamentoMatricula dto = service.cadastrarMatricula(dados);
         URI uri = uriBuilder
-                .path("/usuarios/{id}")
+                .path("/matriculas/{id}")
                 .buildAndExpand(dto.id())
                 .toUri();
-        System.out.println("AQUIIIIIIIIIIIIIII POST FOI CHAMADO");
         return ResponseEntity.created(uri).body(dto);
     }
 
