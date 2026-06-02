@@ -1,6 +1,7 @@
 package com.pedroodake.sistema_de_ocorrencia.application.port.out;
 
 import com.pedroodake.sistema_de_ocorrencia.application.core.domain.model.Usuario;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,4 +17,8 @@ public interface UsuarioRepository {
     Usuario save(Usuario usuario);
 
     Optional<Usuario> findById(Long id);
+
+    boolean existsById(@NotNull Long aLong);
+
+    Usuario getReferenceById(@NotNull Long aLong);
 }

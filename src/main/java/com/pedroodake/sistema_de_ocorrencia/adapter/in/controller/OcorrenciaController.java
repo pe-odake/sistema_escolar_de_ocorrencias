@@ -1,5 +1,6 @@
 package com.pedroodake.sistema_de_ocorrencia.adapter.in.controller;
 
+import com.pedroodake.sistema_de_ocorrencia.adapter.in.controller.request.ocorrencia.DadosAtualizacaoOcorrencia;
 import com.pedroodake.sistema_de_ocorrencia.adapter.in.controller.request.ocorrencia.DadosRegistroOcorrencia;
 import com.pedroodake.sistema_de_ocorrencia.adapter.in.controller.response.ocorrencia.DadosDetalhamentoOcorrencia;
 import com.pedroodake.sistema_de_ocorrencia.adapter.in.controller.response.ocorrencia.DadosListagemOcorrencia;
@@ -24,7 +25,7 @@ import java.net.URI;
 public class OcorrenciaController implements ModelDomainController<
         DadosRegistroOcorrencia,
         DadosListagemOcorrencia,
-        Void,
+        DadosAtualizacaoOcorrencia,
         Void,
         DadosDetalhamentoOcorrencia,
         Long> {
@@ -37,7 +38,7 @@ public class OcorrenciaController implements ModelDomainController<
     @PostMapping
     @PreAuthorize("hasAnyRole('PROFESSOR', 'ANALISTA_DE_QUALIDADE', 'COORDENADOR', 'PROFESSOR_ADMINISTRATIVO')")
     public ResponseEntity<DadosDetalhamentoOcorrencia> cadastrar(
-            @RequestBody @Valid DadosCadastroOcorrencia dados,
+            @RequestBody @Valid DadosRegistroOcorrencia dados,
             UriComponentsBuilder uriBuilder) {
         DadosDetalhamentoOcorrencia dto = service.cadastrarOcorrencia(dados);
         URI uri = uriBuilder
@@ -68,7 +69,6 @@ public class OcorrenciaController implements ModelDomainController<
         return null;
     }
 
-    //  NÃO VEJO NECESSIDADE DE ATUALIZAR, TALVEZ FAZER DEPOIS
     @Override
     @PutMapping
     @PreAuthorize("hasAnyRole('PROFESSOR', 'ANALISTA_DE_QUALIDADE', 'COORDENADOR', 'PROFESSOR_ADMINISTRATIVO')")

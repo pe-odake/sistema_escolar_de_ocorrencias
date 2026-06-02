@@ -1,5 +1,6 @@
 package com.pedroodake.sistema_de_ocorrencia.adapter.in.controller.mapper;
 
+import com.pedroodake.sistema_de_ocorrencia.adapter.in.controller.request.ocorrencia.DadosRegistroOcorrencia;
 import com.pedroodake.sistema_de_ocorrencia.adapter.in.controller.response.ocorrencia.DadosDetalhamentoOcorrencia;
 import com.pedroodake.sistema_de_ocorrencia.adapter.in.controller.response.ocorrencia.DadosListagemOcorrencia;
 import com.pedroodake.sistema_de_ocorrencia.application.core.domain.model.Ocorrencia;

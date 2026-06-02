@@ -2,6 +2,7 @@ package com.pedroodake.sistema_de_ocorrencia.application.core.domain.model;
 
 import com.pedroodake.sistema_de_ocorrencia.application.core.domain.enums.Categoria_Ocorrencia;
 import com.pedroodake.sistema_de_ocorrencia.application.core.domain.enums.Tipo_Ocorrencia;
+import com.pedroodake.sistema_de_ocorrencia.application.core.domain.enums.Turno;
 
 import java.time.Instant;
 
@@ -64,5 +65,32 @@ public class Ocorrencia {
 
     public String getDescricao() {
         return descricao;
+    }
+
+    public void atualizarInformacoes(
+           Usuario usuario,
+           Turma turma,
+           Aluno aluno,
+           Categoria_Ocorrencia categoriaOcorrencia,
+           Tipo_Ocorrencia tipoOcorrencia,
+           String descricao) {
+        if (usuario != null ) {
+            this.usuario = usuario;
+        }
+        if (turma != null ) {
+            this.turma = turma;
+        }
+        if (aluno != null ) {
+            this.aluno = aluno;
+        }
+        if (categoriaOcorrencia != null ) {
+            this.categoriaOcorrencia = categoriaOcorrencia;
+        }
+        if (tipoOcorrencia != null ) {
+            this.tipoOcorrencia = tipoOcorrencia;
+        }
+        if (descricao != null && !descricao.isBlank()) {
+            this.descricao = descricao;
+        }
     }
 }

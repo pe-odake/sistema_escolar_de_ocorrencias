@@ -32,4 +32,17 @@ public class OcorrenciaEntityMapper {
                 entity.getDescricao()
         );
     }
+
+    public OcorrenciaEntity toEntity(Ocorrencia ocorrencia) {
+        return new OcorrenciaEntity(
+                ocorrencia.getId(),
+                usuarioEntityMapper.toEntity(ocorrencia.getUsuario()),
+                turmaEntityMapper.toEntity(ocorrencia.getTurma()),
+                alunoEntityMapper.toEntity(ocorrencia.getAluno()),
+                ocorrencia.getRegistrada_em(),
+                ocorrencia.getCategoriaOcorrencia(),
+                ocorrencia.getTipoOcorrencia(),
+                ocorrencia.getDescricao()
+        );
+    }
 }
