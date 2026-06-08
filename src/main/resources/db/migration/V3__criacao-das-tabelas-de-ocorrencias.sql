@@ -9,7 +9,7 @@ CREATE TABLE ocorrencia (
     descricao VARCHAR(200) NOT NULL,
 
     PRIMARY KEY(id),
-    REFERENCES fk_usuario_id FOREIGN KEY (usuario_id) REFERENCES usuario (id),
-    REFERENCES fk_aluno_id FOREIGN KEY (aluno_id) REFERENCES aluno (id),
-    REFERENCES fk_turma_id FOREIGN KEY (turma_id) REFERENCES turma (id)
+    CONSTRAINT fk_usuario_id FOREIGN KEY (usuario_id) REFERENCES usuario (id),
+    CONSTRAINT fk_aluno_id FOREIGN KEY (aluno_id) REFERENCES aluno (id),
+    CONSTRAINT fk_turma_id FOREIGN KEY (turma_id) REFERENCES turma (id)
 );

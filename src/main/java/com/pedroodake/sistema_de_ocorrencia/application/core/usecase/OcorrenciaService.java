@@ -76,8 +76,9 @@ public class OcorrenciaService {
     }
 
     public Page<DadosListagemOcorrencia> listarOcorrencias(Pageable paginacao) {
+        // .findAllByAtivoTrue(paginacao)
         return repository
-                .findAllByAtivoTrue(paginacao)
+                .findAll(paginacao)
                 .map(mapper::toListDTO);
     }
 
@@ -102,5 +103,13 @@ public class OcorrenciaService {
                 dados.descricao());
         Ocorrencia saved = repository.save(ocorrencia);
         return mapper.toDetailsDTO(saved);
+    }
+
+    @Transactional // SUBSTITUIR POR SOFT DELETE
+    public void excluirOcorrencia(Long id) {
+        Ocorrencia ocorrencia = repository.findById(id)
+                .orElseThrow(() ->
+                        new OcorrenciaNotFoundException("ID do ocorrencia não existe! : ("));
+        repository.delete(ocorrencia);
     }
 }

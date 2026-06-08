@@ -28,10 +28,22 @@ public class OcorrenciaRepositoryImpl implements OcorrenciaRepository {
         return jpaRepository.existsById(id);
     }
 
+    @Override // SUBSTITUIR POR SOFT DELETE
+    public void delete(Ocorrencia ocorrencia) {
+        jpaRepository.deleteById(ocorrencia.getId());
+    }
+
+//    @Override
+//    public Page<Ocorrencia> findAllByAtivoTrue(Pageable paginacao) {
+//        return jpaRepository
+//                .findAllByAtivoTrue(paginacao)
+//                .map(entityMapper::toDomain);
+//    }
+
     @Override
-    public Page<Ocorrencia> findAllByAtivoTrue(Pageable paginacao) {
+    public Page<Ocorrencia> findAll(Pageable paginacao) {
         return jpaRepository
-                .findAllByAtivoTrue(paginacao)
+                .findAll(paginacao)
                 .map(entityMapper::toDomain);
     }
 

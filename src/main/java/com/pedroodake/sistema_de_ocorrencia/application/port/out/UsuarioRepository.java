@@ -18,7 +18,7 @@ public interface UsuarioRepository {
 
     Optional<Usuario> findById(Long id);
 
-    boolean existsById(@NotNull Long aLong);
+    Usuario getReferenceById(Long id);
 
-    Usuario getReferenceById(@NotNull Long aLong);
+    boolean existsById(Long id);
 }

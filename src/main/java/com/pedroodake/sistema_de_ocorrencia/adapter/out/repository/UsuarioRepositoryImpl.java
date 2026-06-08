@@ -49,4 +49,15 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
                 .findById(id)
                 .map(entityMapper::toDomain);
     }
+
+    @Override
+    public Usuario getReferenceById(Long id) {
+        UsuarioEntity entity = jpaRepository.getReferenceById(id);
+        return entityMapper.toDomain(entity);
+    }
+
+    @Override
+    public boolean existsById(Long id) {
+        return jpaRepository.existsById(id);
+    }
 }

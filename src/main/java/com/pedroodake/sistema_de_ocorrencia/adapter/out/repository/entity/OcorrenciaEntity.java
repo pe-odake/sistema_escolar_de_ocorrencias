@@ -1,9 +1,7 @@
 package com.pedroodake.sistema_de_ocorrencia.adapter.out.repository.entity;
 
 import com.pedroodake.sistema_de_ocorrencia.application.core.domain.enums.Categoria_Ocorrencia;
-import com.pedroodake.sistema_de_ocorrencia.application.core.domain.enums.Perfil;
 import com.pedroodake.sistema_de_ocorrencia.application.core.domain.enums.Tipo_Ocorrencia;
-import com.pedroodake.sistema_de_ocorrencia.application.core.domain.model.Usuario;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;

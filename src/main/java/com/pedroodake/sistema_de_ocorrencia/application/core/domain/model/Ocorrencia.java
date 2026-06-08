@@ -24,7 +24,8 @@ public class Ocorrencia {
             Instant registrada_em,
             Categoria_Ocorrencia categoriaOcorrencia,
             Tipo_Ocorrencia tipoOcorrencia,
-            String descricao) {
+            String descricao
+            ) {
         this.id = id;
         this.usuario = usuario;
         this.turma = turma;

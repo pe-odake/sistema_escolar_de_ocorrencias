@@ -65,11 +65,6 @@ public class OcorrenciaController implements ModelDomainController<
     }
 
     @Override
-    public ResponseEntity<DadosDetalhamentoOcorrencia> atualizar(Void dados) {
-        return null;
-    }
-
-    @Override
     @PutMapping
     @PreAuthorize("hasAnyRole('PROFESSOR', 'ANALISTA_DE_QUALIDADE', 'COORDENADOR', 'PROFESSOR_ADMINISTRATIVO')")
     public ResponseEntity<DadosDetalhamentoOcorrencia> atualizar(

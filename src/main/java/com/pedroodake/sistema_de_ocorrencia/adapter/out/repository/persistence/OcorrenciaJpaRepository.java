@@ -6,6 +6,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface OcorrenciaJpaRepository extends JpaRepository<OcorrenciaEntity, Long> {
-    Page<OcorrenciaEntity> findAllByAtivoTrue(Pageable paginacao);
+    // Page<OcorrenciaEntity> findAllByAtivoTrue(Pageable paginacao);
 
 }
