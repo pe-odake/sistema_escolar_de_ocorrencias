@@ -7,16 +7,14 @@ import com.pedroodake.sistema_de_ocorrencia.application.core.domain.model.Turma;
 import com.pedroodake.sistema_de_ocorrencia.application.core.domain.model.Usuario;
 import jakarta.validation.constraints.NotNull;
 
-import java.time.Instant;
-
 public record DadosAtualizacaoOcorrencia(
         @NotNull
         Long id,
         Usuario usuario,
         Turma turma,
         Aluno aluno,
-        Categoria_Ocorrencia categoriaOcorrencia,
-        Tipo_Ocorrencia tipoOcorrencia,
+        Categoria_Ocorrencia categoria,
+        Tipo_Ocorrencia tipo,
         String descricao
 ) {
 }

@@ -14,7 +14,7 @@ public record DadosListagemOcorrencia (
         Turma turma,
         Aluno aluno,
         Instant registrada_em,
-        Categoria_Ocorrencia categoriaOcorrencia,
-        Tipo_Ocorrencia tipoOcorrencia,
+        Categoria_Ocorrencia categoria,
+        Tipo_Ocorrencia tipo,
         String descricao) {
 }

@@ -67,8 +67,8 @@ public class OcorrenciaService {
                 turma,
                 aluno,
                 dados.registrada_em(),
-                dados.categoriaOcorrencia(),
-                dados.tipoOcorrencia(),
+                dados.categoria(),
+                dados.tipo(),
                 dados.descricao()
         );
         Ocorrencia saved = repository.save(ocorrencia);
@@ -98,8 +98,8 @@ public class OcorrenciaService {
                 dados.usuario(),
                 dados.turma(),
                 dados.aluno(),
-                dados.categoriaOcorrencia(),
-                dados.tipoOcorrencia(),
+                dados.categoria(),
+                dados.tipo(),
                 dados.descricao());
         Ocorrencia saved = repository.save(ocorrencia);
         return mapper.toDetailsDTO(saved);

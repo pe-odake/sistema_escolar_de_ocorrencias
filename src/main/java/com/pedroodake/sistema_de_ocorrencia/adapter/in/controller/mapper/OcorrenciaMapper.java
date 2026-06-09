@@ -16,8 +16,8 @@ public class OcorrenciaMapper {
                 ocorrencia.getTurma(),
                 ocorrencia.getAluno(),
                 ocorrencia.getRegistrada_em(),
-                ocorrencia.getCategoriaOcorrencia(),
-                ocorrencia.getTipoOcorrencia(),
+                ocorrencia.getCategoria(),
+                ocorrencia.getTipo(),
                 ocorrencia.getDescricao()
         );
     }
@@ -29,8 +29,8 @@ public class OcorrenciaMapper {
                 ocorrencia.getTurma(),
                 ocorrencia.getAluno(),
                 ocorrencia.getRegistrada_em(),
-                ocorrencia.getCategoriaOcorrencia(),
-                ocorrencia.getTipoOcorrencia(),
+                ocorrencia.getCategoria(),
+                ocorrencia.getTipo(),
                 ocorrencia.getDescricao()
         );
     }

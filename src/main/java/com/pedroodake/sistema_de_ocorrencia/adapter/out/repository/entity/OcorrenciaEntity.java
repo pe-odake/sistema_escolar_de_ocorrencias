@@ -36,10 +36,10 @@ public class OcorrenciaEntity {
     private Instant registrada_em;
 
     @Enumerated(EnumType.STRING)
-    private Categoria_Ocorrencia categoriaOcorrencia;
+    private Categoria_Ocorrencia categoria;
 
     @Enumerated(EnumType.STRING)
-    private Tipo_Ocorrencia tipoOcorrencia;
+    private Tipo_Ocorrencia tipo;
 
     private String descricao;
 

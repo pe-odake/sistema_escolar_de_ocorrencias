@@ -4,8 +4,8 @@ CREATE TABLE ocorrencia (
     turma_id BIGINT NOT NULL,
     aluno_id BIGINT NOT NULL,
     registrada_em TIMESTAMPTZ NOT NULL,
-    categoria BIGINT NOT NULL,
-    tipo BIGINT NOT NULL,
+    categoria VARCHAR(14) NOT NULL,
+    tipo VARCHAR(13) NOT NULL,
     descricao VARCHAR(200) NOT NULL,
 
     PRIMARY KEY(id),

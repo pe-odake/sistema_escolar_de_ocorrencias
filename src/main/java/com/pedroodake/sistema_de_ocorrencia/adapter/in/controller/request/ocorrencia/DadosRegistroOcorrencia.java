@@ -20,9 +20,9 @@ public record DadosRegistroOcorrencia(
         Instant registrada_em,
 
         @NotNull
-        Categoria_Ocorrencia categoriaOcorrencia,
+        Categoria_Ocorrencia categoria,
 
         @NotNull
-        Tipo_Ocorrencia tipoOcorrencia,
+        Tipo_Ocorrencia tipo,
         String descricao) {
 }

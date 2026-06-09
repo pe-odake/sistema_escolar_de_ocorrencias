@@ -15,8 +15,8 @@ public record DadosDetalhamentoOcorrencia(
         Turma turma,
         Aluno aluno,
         Instant registrada_em,
-        Categoria_Ocorrencia categoriaOcorrencia,
-        Tipo_Ocorrencia tipoOcorrencia,
+        Categoria_Ocorrencia categoria,
+        Tipo_Ocorrencia tipo,
         String descricao) {
 
     public DadosDetalhamentoOcorrencia(Ocorrencia ocorrencia) {
@@ -26,8 +26,8 @@ public record DadosDetalhamentoOcorrencia(
                 ocorrencia.getTurma(),
                 ocorrencia.getAluno(),
                 ocorrencia.getRegistrada_em(),
-                ocorrencia.getCategoriaOcorrencia(),
-                ocorrencia.getTipoOcorrencia(),
+                ocorrencia.getCategoria(),
+                ocorrencia.getTipo(),
                 ocorrencia.getDescricao()
         );
     }

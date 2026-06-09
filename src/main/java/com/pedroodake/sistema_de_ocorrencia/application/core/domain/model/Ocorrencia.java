@@ -12,8 +12,8 @@ public class Ocorrencia {
     private Turma turma;
     private Aluno aluno;
     private Instant registrada_em;
-    private Categoria_Ocorrencia categoriaOcorrencia;
-    private Tipo_Ocorrencia tipoOcorrencia;
+    private Categoria_Ocorrencia categoria;
+    private Tipo_Ocorrencia tipo;
     private String descricao;
 
     public Ocorrencia(
@@ -22,8 +22,8 @@ public class Ocorrencia {
             Turma turma,
             Aluno aluno,
             Instant registrada_em,
-            Categoria_Ocorrencia categoriaOcorrencia,
-            Tipo_Ocorrencia tipoOcorrencia,
+            Categoria_Ocorrencia categoria,
+            Tipo_Ocorrencia tipo,
             String descricao
             ) {
         this.id = id;
@@ -31,8 +31,8 @@ public class Ocorrencia {
         this.turma = turma;
         this.aluno = aluno;
         this.registrada_em = registrada_em;
-        this.categoriaOcorrencia = categoriaOcorrencia;
-        this.tipoOcorrencia = tipoOcorrencia;
+        this.categoria = categoria;
+        this.tipo = tipo;
         this.descricao = descricao;
     }
 
@@ -56,12 +56,12 @@ public class Ocorrencia {
         return registrada_em;
     }
 
-    public Categoria_Ocorrencia getCategoriaOcorrencia() {
-        return categoriaOcorrencia;
+    public Categoria_Ocorrencia getCategoria() {
+        return categoria;
     }
 
-    public Tipo_Ocorrencia getTipoOcorrencia() {
-        return tipoOcorrencia;
+    public Tipo_Ocorrencia getTipo() {
+        return tipo;
     }
 
     public String getDescricao() {
@@ -72,8 +72,8 @@ public class Ocorrencia {
            Usuario usuario,
            Turma turma,
            Aluno aluno,
-           Categoria_Ocorrencia categoriaOcorrencia,
-           Tipo_Ocorrencia tipoOcorrencia,
+           Categoria_Ocorrencia categoria,
+           Tipo_Ocorrencia tipo,
            String descricao) {
         if (usuario != null ) {
             this.usuario = usuario;
@@ -84,11 +84,11 @@ public class Ocorrencia {
         if (aluno != null ) {
             this.aluno = aluno;
         }
-        if (categoriaOcorrencia != null ) {
-            this.categoriaOcorrencia = categoriaOcorrencia;
+        if (categoria != null ) {
+            this.categoria = categoria;
         }
-        if (tipoOcorrencia != null ) {
-            this.tipoOcorrencia = tipoOcorrencia;
+        if (tipo != null ) {
+            this.tipo = tipo;
         }
         if (descricao != null && !descricao.isBlank()) {
             this.descricao = descricao;

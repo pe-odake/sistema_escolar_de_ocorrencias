@@ -26,8 +26,8 @@ public class OcorrenciaEntityMapper {
                 turmaEntityMapper.toDomain(entity.getTurma()),
                 alunoEntityMapper.toDomain(entity.getAluno()),
                 entity.getRegistrada_em(),
-                entity.getCategoriaOcorrencia(),
-                entity.getTipoOcorrencia(),
+                entity.getCategoria(),
+                entity.getTipo(),
                 entity.getDescricao()
         );
     }
@@ -39,8 +39,8 @@ public class OcorrenciaEntityMapper {
                 turmaEntityMapper.toEntity(ocorrencia.getTurma()),
                 alunoEntityMapper.toEntity(ocorrencia.getAluno()),
                 ocorrencia.getRegistrada_em(),
-                ocorrencia.getCategoriaOcorrencia(),
-                ocorrencia.getTipoOcorrencia(),
+                ocorrencia.getCategoria(),
+                ocorrencia.getTipo(),
                 ocorrencia.getDescricao()
         );
     }
