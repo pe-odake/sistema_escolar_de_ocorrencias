@@ -2,15 +2,13 @@ package com.pedroodake.sistema_de_ocorrencia.application.core.domain.model;
 
 import com.pedroodake.sistema_de_ocorrencia.application.core.domain.enums.Categoria_Ocorrencia;
 import com.pedroodake.sistema_de_ocorrencia.application.core.domain.enums.Tipo_Ocorrencia;
-import com.pedroodake.sistema_de_ocorrencia.application.core.domain.enums.Turno;
 
 import java.time.Instant;
 
 public class Ocorrencia {
     private Long id;
     private Usuario usuario;
-    private Turma turma;
-    private Aluno aluno;
+    private Matricula matricula;
     private Instant registrada_em;
     private Categoria_Ocorrencia categoria;
     private Tipo_Ocorrencia tipo;
@@ -19,8 +17,7 @@ public class Ocorrencia {
     public Ocorrencia(
             Long id,
             Usuario usuario,
-            Turma turma,
-            Aluno aluno,
+            Matricula matricula,
             Instant registrada_em,
             Categoria_Ocorrencia categoria,
             Tipo_Ocorrencia tipo,
@@ -28,8 +25,7 @@ public class Ocorrencia {
             ) {
         this.id = id;
         this.usuario = usuario;
-        this.turma = turma;
-        this.aluno = aluno;
+        this.matricula = matricula;
         this.registrada_em = registrada_em;
         this.categoria = categoria;
         this.tipo = tipo;
@@ -40,16 +36,12 @@ public class Ocorrencia {
         return id;
     }
 
-    public Turma getTurma() {
-        return turma;
-    }
-
     public Usuario getUsuario() {
         return usuario;
     }
 
-    public Aluno getAluno() {
-        return aluno;
+    public Matricula getMatricula() {
+        return matricula;
     }
 
     public Instant getRegistrada_em() {
@@ -70,19 +62,15 @@ public class Ocorrencia {
 
     public void atualizarInformacoes(
            Usuario usuario,
-           Turma turma,
-           Aluno aluno,
+           Matricula matricula,
            Categoria_Ocorrencia categoria,
            Tipo_Ocorrencia tipo,
            String descricao) {
         if (usuario != null ) {
             this.usuario = usuario;
         }
-        if (turma != null ) {
-            this.turma = turma;
-        }
-        if (aluno != null ) {
-            this.aluno = aluno;
+        if (matricula != null ) {
+            this.matricula = matricula;
         }
         if (categoria != null ) {
             this.categoria = categoria;

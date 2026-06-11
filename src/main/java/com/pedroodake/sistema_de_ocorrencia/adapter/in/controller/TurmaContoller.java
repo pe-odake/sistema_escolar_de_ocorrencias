@@ -37,7 +37,7 @@ public class TurmaContoller implements ModelDomainController<
 
     @Override
     @PostMapping
-    @PreAuthorize("hasAnyRole('PROFESSOR', 'ANALISTA_DE_QUALIDADE', 'COORDENADOR', 'PROFESSOR_ADMINISTRATIVO')")
+    @PreAuthorize("hasRole('PROFESSOR_ADMINISTRATIVO')")
     public ResponseEntity<DadosDetalhamentoTurma> cadastrar(
             @RequestBody @Valid DadosCadastroTurma dados,
             UriComponentsBuilder uriBuilder) {
@@ -51,7 +51,7 @@ public class TurmaContoller implements ModelDomainController<
 
     @Override
     @GetMapping
-    @PreAuthorize("hasAnyRole('PROFESSOR', 'ANALISTA_DE_QUALIDADE', 'COORDENADOR', 'PROFESSOR_ADMINISTRATIVO')")
+    @PreAuthorize("hasRole('PROFESSOR_ADMINISTRATIVO')")
     public ResponseEntity<Page<DadosListagemTurma>> listar(
             @ParameterObject @PageableDefault(size = 10, sort = "id") Pageable paginacao) {
         return ResponseEntity.ok(service.listarTurmas(paginacao));
@@ -59,7 +59,7 @@ public class TurmaContoller implements ModelDomainController<
 
     @Override
     @GetMapping("/{id}")
-    @PreAuthorize("hasAnyRole('PROFESSOR', 'ANALISTA_DE_QUALIDADE', 'COORDENADOR', 'PROFESSOR_ADMINISTRATIVO')")
+    @PreAuthorize("hasRole('PROFESSOR_ADMINISTRATIVO')")
     public ResponseEntity<DadosDetalhamentoTurma> detalhar(
             @PathVariable Long id) {
         return ResponseEntity.ok(service.detalharTurma(id));
@@ -67,7 +67,7 @@ public class TurmaContoller implements ModelDomainController<
 
     @Override
     @PutMapping
-    @PreAuthorize("hasAnyRole('PROFESSOR', 'ANALISTA_DE_QUALIDADE', 'COORDENADOR', 'PROFESSOR_ADMINISTRATIVO')")
+    @PreAuthorize("hasRole('PROFESSOR_ADMINISTRATIVO')")
     public ResponseEntity<DadosDetalhamentoTurma> atualizar(
             @RequestBody @Valid DadosAtualizacaoTurma dados) {
         return ResponseEntity.ok(service.atualizarTurma(dados));
@@ -75,7 +75,7 @@ public class TurmaContoller implements ModelDomainController<
 
     @Override
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAnyRole('PROFESSOR', 'ANALISTA_DE_QUALIDADE', 'COORDENADOR', 'PROFESSOR_ADMINISTRATIVO')")
+    @PreAuthorize("hasRole('PROFESSOR_ADMINISTRATIVO')")
     public ResponseEntity<Void> excluir(@PathVariable Long id) {
         service.excluirTurma(id);
         return ResponseEntity.noContent().build();

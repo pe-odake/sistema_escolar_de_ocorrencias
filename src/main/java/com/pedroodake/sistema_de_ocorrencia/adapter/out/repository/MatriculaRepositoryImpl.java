@@ -1,8 +1,10 @@
 package com.pedroodake.sistema_de_ocorrencia.adapter.out.repository;
 
+import com.pedroodake.sistema_de_ocorrencia.adapter.out.repository.entity.AlunoEntity;
 import com.pedroodake.sistema_de_ocorrencia.adapter.out.repository.entity.MatriculaEntity;
 import com.pedroodake.sistema_de_ocorrencia.adapter.out.repository.mapper.MatriculaEntityMapper;
 import com.pedroodake.sistema_de_ocorrencia.adapter.out.repository.persistence.MatriculaJpaRepository;
+import com.pedroodake.sistema_de_ocorrencia.application.core.domain.model.Aluno;
 import com.pedroodake.sistema_de_ocorrencia.application.core.domain.model.Matricula;
 import com.pedroodake.sistema_de_ocorrencia.application.port.out.MatriculaRepository;
 import org.springframework.data.domain.Page;
@@ -42,5 +44,16 @@ public class MatriculaRepositoryImpl implements MatriculaRepository {
         return jpaRepository
                 .findById(id)
                 .map(entityMapper::toDomain);
+    }
+
+    @Override
+    public boolean existsById(Long id) {
+        return jpaRepository.existsById(id);
+    }
+
+    @Override
+    public Matricula getReferenceById(Long id) {
+        MatriculaEntity entity = jpaRepository.getReferenceById(id);
+        return entityMapper.toDomain(entity);
     }
 }

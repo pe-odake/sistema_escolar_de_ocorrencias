@@ -7,24 +7,20 @@ import org.springframework.stereotype.Component;
 @Component
 public class OcorrenciaEntityMapper {
     private final UsuarioEntityMapper usuarioEntityMapper;
-    private final TurmaEntityMapper turmaEntityMapper;
-    private final AlunoEntityMapper alunoEntityMapper;
+    private final MatriculaEntityMapper matriculaEntityMapper;
 
     public OcorrenciaEntityMapper(
             UsuarioEntityMapper usuarioEntityMapper,
-            TurmaEntityMapper turmaEntityMapper,
-            AlunoEntityMapper alunoEntityMapper) {
+            MatriculaEntityMapper matriculaEntityMapper) {
         this.usuarioEntityMapper = usuarioEntityMapper;
-        this.turmaEntityMapper = turmaEntityMapper;
-        this.alunoEntityMapper = alunoEntityMapper;
+        this.matriculaEntityMapper = matriculaEntityMapper;
     }
 
     public Ocorrencia toDomain(OcorrenciaEntity entity) {
         return new Ocorrencia(
                 entity.getId(),
                 usuarioEntityMapper.toDomain(entity.getUsuario()),
-                turmaEntityMapper.toDomain(entity.getTurma()),
-                alunoEntityMapper.toDomain(entity.getAluno()),
+                matriculaEntityMapper.toDomain(entity.getMatricula()),
                 entity.getRegistrada_em(),
                 entity.getCategoria(),
                 entity.getTipo(),
@@ -36,8 +32,7 @@ public class OcorrenciaEntityMapper {
         return new OcorrenciaEntity(
                 ocorrencia.getId(),
                 usuarioEntityMapper.toEntity(ocorrencia.getUsuario()),
-                turmaEntityMapper.toEntity(ocorrencia.getTurma()),
-                alunoEntityMapper.toEntity(ocorrencia.getAluno()),
+                matriculaEntityMapper.toEntity(ocorrencia.getMatricula()),
                 ocorrencia.getRegistrada_em(),
                 ocorrencia.getCategoria(),
                 ocorrencia.getTipo(),

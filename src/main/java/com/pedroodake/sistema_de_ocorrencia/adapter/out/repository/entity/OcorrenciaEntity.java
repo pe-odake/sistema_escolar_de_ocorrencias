@@ -26,12 +26,8 @@ public class OcorrenciaEntity {
     private UsuarioEntity usuario;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "turma_id")
-    private TurmaEntity turma;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "aluno_id")
-    private AlunoEntity aluno;
+    @JoinColumn(name = "matricula_id")
+    private MatriculaEntity matricula;
 
     private Instant registrada_em;
 

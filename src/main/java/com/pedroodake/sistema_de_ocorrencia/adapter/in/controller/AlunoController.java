@@ -36,7 +36,7 @@ public class AlunoController implements ModelDomainController<
     }
     @Override
     @PostMapping
-    @PreAuthorize("hasAnyRole('PROFESSOR', 'ANALISTA_DE_QUALIDADE', 'COORDENADOR', 'PROFESSOR_ADMINISTRATIVO')")
+    @PreAuthorize("hasRole('PROFESSOR_ADMINISTRATIVO')")
     public ResponseEntity<DadosDetalhamentoAluno> cadastrar(
             @RequestBody @Valid DadosCadastroAluno dados,
             UriComponentsBuilder uriBuilder) {
@@ -50,7 +50,7 @@ public class AlunoController implements ModelDomainController<
 
     @Override
     @GetMapping
-    @PreAuthorize("hasAnyRole('PROFESSOR', 'ANALISTA_DE_QUALIDADE', 'COORDENADOR', 'PROFESSOR_ADMINISTRATIVO')")
+    @PreAuthorize("hasRole('PROFESSOR_ADMINISTRATIVO')")
     public ResponseEntity<Page<DadosListagemAluno>> listar(
             @ParameterObject @PageableDefault(size = 10, sort = "nome") Pageable paginacao) {
         return ResponseEntity.ok(service.listarAlunos(paginacao));
@@ -58,7 +58,7 @@ public class AlunoController implements ModelDomainController<
 
     @Override
     @GetMapping("/{id}")
-    @PreAuthorize("hasAnyRole('PROFESSOR', 'ANALISTA_DE_QUALIDADE', 'COORDENADOR', 'PROFESSOR_ADMINISTRATIVO')")
+    @PreAuthorize("hasRole('PROFESSOR_ADMINISTRATIVO')")
     public ResponseEntity<DadosDetalhamentoAluno> detalhar(
             @PathVariable Long id) {
         return ResponseEntity.ok(service.detalharAluno(id));
@@ -66,7 +66,7 @@ public class AlunoController implements ModelDomainController<
 
     @Override
     @PutMapping
-    @PreAuthorize("hasAnyRole('PROFESSOR', 'ANALISTA_DE_QUALIDADE', 'COORDENADOR', 'PROFESSOR_ADMINISTRATIVO')")
+    @PreAuthorize("hasRole('PROFESSOR_ADMINISTRATIVO')")
     public ResponseEntity<DadosDetalhamentoAluno> atualizar(
             @RequestBody @Valid DadosAtualizacaoAluno dados) {
         return ResponseEntity.ok(service.atualizarAluno(dados));
@@ -74,7 +74,7 @@ public class AlunoController implements ModelDomainController<
 
     @Override
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAnyRole('PROFESSOR', 'ANALISTA_DE_QUALIDADE', 'COORDENADOR', 'PROFESSOR_ADMINISTRATIVO')")
+    @PreAuthorize("hasRole('PROFESSOR_ADMINISTRATIVO')")
     public ResponseEntity<Void> excluir(@PathVariable Long id) {
         service.excluirAluno(id);
         return ResponseEntity.noContent().build();

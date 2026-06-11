@@ -5,17 +5,14 @@ import com.pedroodake.sistema_de_ocorrencia.adapter.in.controller.request.ocorre
 import com.pedroodake.sistema_de_ocorrencia.adapter.in.controller.request.ocorrencia.DadosRegistroOcorrencia;
 import com.pedroodake.sistema_de_ocorrencia.adapter.in.controller.response.ocorrencia.DadosDetalhamentoOcorrencia;
 import com.pedroodake.sistema_de_ocorrencia.adapter.in.controller.response.ocorrencia.DadosListagemOcorrencia;
-import com.pedroodake.sistema_de_ocorrencia.application.core.domain.model.Aluno;
+import com.pedroodake.sistema_de_ocorrencia.application.core.domain.model.Matricula;
 import com.pedroodake.sistema_de_ocorrencia.application.core.domain.model.Ocorrencia;
-import com.pedroodake.sistema_de_ocorrencia.application.core.domain.model.Turma;
 import com.pedroodake.sistema_de_ocorrencia.application.core.domain.model.Usuario;
-import com.pedroodake.sistema_de_ocorrencia.application.port.out.AlunoRepository;
+import com.pedroodake.sistema_de_ocorrencia.application.port.out.MatriculaRepository;
 import com.pedroodake.sistema_de_ocorrencia.application.port.out.OcorrenciaRepository;
-import com.pedroodake.sistema_de_ocorrencia.application.port.out.TurmaRepository;
 import com.pedroodake.sistema_de_ocorrencia.application.port.out.UsuarioRepository;
-import com.pedroodake.sistema_de_ocorrencia.exception.type.aluno.AlunoNotFoundException;
+import com.pedroodake.sistema_de_ocorrencia.exception.type.matricula.MatriculaNotFoundException;
 import com.pedroodake.sistema_de_ocorrencia.exception.type.ocorrencia.OcorrenciaNotFoundException;
-import com.pedroodake.sistema_de_ocorrencia.exception.type.turma.TurmaNotFoundException;
 import com.pedroodake.sistema_de_ocorrencia.exception.type.usuario.UsuarioNotFoundException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -27,20 +24,17 @@ public class OcorrenciaService {
     private final OcorrenciaRepository repository;
     private final OcorrenciaMapper mapper;
     private final UsuarioRepository usuarioRepository;
-    private final TurmaRepository turmaRepository;
-    private final AlunoRepository alunoRepository;
+    private final MatriculaRepository matriculaRepository;
 
     public OcorrenciaService(
             OcorrenciaRepository repository,
             OcorrenciaMapper mapper,
             UsuarioRepository usuarioRepository,
-            TurmaRepository turmaRepository,
-            AlunoRepository alunoRepository){
+            MatriculaRepository matriculaRepository){
         this.repository = repository;
         this.mapper = mapper;
         this.usuarioRepository = usuarioRepository;
-        this.turmaRepository = turmaRepository;
-        this.alunoRepository = alunoRepository;
+        this.matriculaRepository = matriculaRepository;
     }
 
     @Transactional
@@ -48,25 +42,20 @@ public class OcorrenciaService {
         if (!usuarioRepository.existsById(dados.idUsuario())) {
             throw new UsuarioNotFoundException("ID do instrutor informado não existe!");
         }
-        if (!turmaRepository.existsById(dados.idTurma())) {
-            throw new TurmaNotFoundException("ID do aluno informado não existe!");
-        }
-        if (!alunoRepository.existsById(dados.idAluno())) {
-            throw new AlunoNotFoundException("ID do aluno informado não existe!");
+        if (!matriculaRepository.existsById(dados.idMatricula())) {
+            throw new MatriculaNotFoundException("ID da matrícula informada não existe!");
         }
         //Validações
         //validadoresOcorrencia.forEach(v -> v.validar(dados));
 
         Usuario usuario = usuarioRepository.getReferenceById(dados.idUsuario());
-        Turma turma = turmaRepository.getReferenceById(dados.idTurma());
-        Aluno aluno = alunoRepository.getReferenceById(dados.idAluno());
+        Matricula matricula = matriculaRepository.getReferenceById(dados.idMatricula());
 
         Ocorrencia ocorrencia = new Ocorrencia(
                 null,
                 usuario,
-                turma,
-                aluno,
-                dados.registrada_em(),
+                matricula,
+                java.time.Instant.now(),
                 dados.categoria(),
                 dados.tipo(),
                 dados.descricao()
@@ -96,8 +85,7 @@ public class OcorrenciaService {
                         new OcorrenciaNotFoundException("ID do ocorrencia não existe! : ("));
         ocorrencia.atualizarInformacoes(
                 dados.usuario(),
-                dados.turma(),
-                dados.aluno(),
+                dados.matricula(),
                 dados.categoria(),
                 dados.tipo(),
                 dados.descricao());

@@ -35,7 +35,7 @@ public class MatriculaController implements ModelDomainController<
     }
     @Override
     @PostMapping
-    @PreAuthorize("hasAnyRole('PROFESSOR', 'ANALISTA_DE_QUALIDADE', 'COORDENADOR', 'PROFESSOR_ADMINISTRATIVO')")
+    @PreAuthorize("hasRole('PROFESSOR_ADMINISTRATIVO')")
     public ResponseEntity<DadosDetalhamentoMatricula> cadastrar(
             @RequestBody @Valid DadosCadastroMatricula dados,
             UriComponentsBuilder uriBuilder) {
@@ -49,7 +49,7 @@ public class MatriculaController implements ModelDomainController<
 
     @Override
     @GetMapping
-    @PreAuthorize("hasAnyRole('PROFESSOR', 'ANALISTA_DE_QUALIDADE', 'COORDENADOR', 'PROFESSOR_ADMINISTRATIVO')")
+    @PreAuthorize("hasRole('PROFESSOR_ADMINISTRATIVO')")
     public ResponseEntity<Page<DadosListagemMatricula>> listar(
             @ParameterObject @PageableDefault(size = 10) Pageable paginacao) {
         return ResponseEntity.ok(service.listarMatriculas(paginacao));
@@ -57,7 +57,7 @@ public class MatriculaController implements ModelDomainController<
 
     @Override
     @GetMapping("/{id}")
-    @PreAuthorize("hasAnyRole('PROFESSOR', 'ANALISTA_DE_QUALIDADE', 'COORDENADOR', 'PROFESSOR_ADMINISTRATIVO')")
+    @PreAuthorize("hasRole('PROFESSOR_ADMINISTRATIVO')")
     public ResponseEntity<DadosDetalhamentoMatricula> detalhar(
             @PathVariable Long id) {
         return ResponseEntity.ok(service.detalharMatricula(id));
@@ -79,7 +79,7 @@ public class MatriculaController implements ModelDomainController<
 
     @Override
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAnyRole('PROFESSOR', 'ANALISTA_DE_QUALIDADE', 'COORDENADOR', 'PROFESSOR_ADMINISTRATIVO')")
+    @PreAuthorize("hasRole('PROFESSOR_ADMINISTRATIVO')")
     public ResponseEntity<Void> excluir(@PathVariable Long id) {
         service.excluirMatricula(id);
         return ResponseEntity.noContent().build();

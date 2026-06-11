@@ -39,7 +39,7 @@ public class UsuarioController implements ModelDomainController<
 
     @Override
     @PostMapping
-    @PreAuthorize("hasAnyRole('PROFESSOR', 'ANALISTA_DE_QUALIDADE', 'COORDENADOR', 'PROFESSOR_ADMINISTRATIVO')")
+    @PreAuthorize("hasRole('PROFESSOR_ADMINISTRATIVO')")
     public ResponseEntity<DadosDetalhamentoUsuario> cadastrar(
             @RequestBody @Valid DadosCadastroUsuario dados,
             UriComponentsBuilder uriBuilder) {
@@ -53,7 +53,7 @@ public class UsuarioController implements ModelDomainController<
 
     @Override
     @GetMapping
-    @PreAuthorize("hasAnyRole('PROFESSOR', 'ANALISTA_DE_QUALIDADE', 'COORDENADOR', 'PROFESSOR_ADMINISTRATIVO')")
+    @PreAuthorize("hasRole('PROFESSOR_ADMINISTRATIVO')")
     public ResponseEntity<Page<DadosListagemUsuario>> listar(
             @ParameterObject @PageableDefault(size = 10, sort = "nome") Pageable paginacao) {
         return ResponseEntity.ok(service.listarUsuarios(paginacao));
@@ -61,7 +61,7 @@ public class UsuarioController implements ModelDomainController<
 
     @Override
     @GetMapping("/{id}")
-    @PreAuthorize("hasAnyRole('PROFESSOR', 'ANALISTA_DE_QUALIDADE', 'COORDENADOR', 'PROFESSOR_ADMINISTRATIVO')")
+    @PreAuthorize("hasRole('PROFESSOR_ADMINISTRATIVO')")
     public ResponseEntity<DadosDetalhamentoUsuario> detalhar(
             @PathVariable Long id) {
         return ResponseEntity.ok(service.detalharUsuario(id));
@@ -69,7 +69,7 @@ public class UsuarioController implements ModelDomainController<
 
     @Override
     @PutMapping
-    @PreAuthorize("hasAnyRole('PROFESSOR', 'ANALISTA_DE_QUALIDADE', 'COORDENADOR', 'PROFESSOR_ADMINISTRATIVO')")
+    @PreAuthorize("hasRole('PROFESSOR_ADMINISTRATIVO')")
     public ResponseEntity<DadosDetalhamentoUsuario> atualizar(
             @RequestBody @Valid DadosAtualizacaoUsuario dados) {
         return ResponseEntity.ok(service.atualizarUsuario(dados));
@@ -77,14 +77,14 @@ public class UsuarioController implements ModelDomainController<
 
     @Override
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAnyRole('PROFESSOR', 'ANALISTA_DE_QUALIDADE', 'COORDENADOR', 'PROFESSOR_ADMINISTRATIVO')")
+    @PreAuthorize("hasRole('PROFESSOR_ADMINISTRATIVO')")
     public ResponseEntity<Void> excluir(@PathVariable Long id) {
         service.excluirUsuario(id);
         return ResponseEntity.noContent().build();
     }
 
     @PatchMapping
-    @PreAuthorize("hasAnyRole('PROFESSOR', 'ANALISTA_DE_QUALIDADE', 'COORDENADOR', 'PROFESSOR_ADMINISTRATIVO')")
+    @PreAuthorize("hasRole('PROFESSOR_ADMINISTRATIVO')")
     public ResponseEntity<DadosSucesso> atualizarSenha(
             @RequestBody @Valid DadosAtualizacaoSenha dados) {
         return ResponseEntity.ok(service.atualizarSenhaUsuario(dados));

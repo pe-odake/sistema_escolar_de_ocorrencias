@@ -1,8 +1,7 @@
 CREATE TABLE ocorrencia (
     id BIGSERIAL NOT NULL,
     usuario_id BIGINT NOT NULL,
-    turma_id BIGINT NOT NULL,
-    aluno_id BIGINT NOT NULL,
+    matricula_id BIGINT NOT NULL,
     registrada_em TIMESTAMPTZ NOT NULL,
     categoria VARCHAR(14) NOT NULL,
     tipo VARCHAR(13) NOT NULL,
@@ -10,6 +9,5 @@ CREATE TABLE ocorrencia (
 
     PRIMARY KEY(id),
     CONSTRAINT fk_usuario_id FOREIGN KEY (usuario_id) REFERENCES usuario (id),
-    CONSTRAINT fk_aluno_id FOREIGN KEY (aluno_id) REFERENCES aluno (id),
-    CONSTRAINT fk_turma_id FOREIGN KEY (turma_id) REFERENCES turma (id)
+    CONSTRAINT fk_matricula_id FOREIGN KEY (matricula_id) REFERENCES matricula (id)
 );

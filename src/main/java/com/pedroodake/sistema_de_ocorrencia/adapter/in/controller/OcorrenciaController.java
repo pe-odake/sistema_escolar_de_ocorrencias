@@ -36,7 +36,7 @@ public class OcorrenciaController implements ModelDomainController<
     }
     @Override
     @PostMapping
-    @PreAuthorize("hasAnyRole('PROFESSOR', 'ANALISTA_DE_QUALIDADE', 'COORDENADOR', 'PROFESSOR_ADMINISTRATIVO')")
+    @PreAuthorize("hasRole('PROFESSOR')")
     public ResponseEntity<DadosDetalhamentoOcorrencia> cadastrar(
             @RequestBody @Valid DadosRegistroOcorrencia dados,
             UriComponentsBuilder uriBuilder) {
@@ -50,7 +50,7 @@ public class OcorrenciaController implements ModelDomainController<
 
     @Override
     @GetMapping
-    @PreAuthorize("hasAnyRole('PROFESSOR', 'ANALISTA_DE_QUALIDADE', 'COORDENADOR', 'PROFESSOR_ADMINISTRATIVO')")
+    @PreAuthorize("hasAnyRole('ANALISTA_DE_QUALIDADE', 'COORDENADOR')")
     public ResponseEntity<Page<DadosListagemOcorrencia>> listar(
             @ParameterObject @PageableDefault(size = 10) Pageable paginacao) {
         return ResponseEntity.ok(service.listarOcorrencias(paginacao));
@@ -58,7 +58,7 @@ public class OcorrenciaController implements ModelDomainController<
 
     @Override
     @GetMapping("/{id}")
-    @PreAuthorize("hasAnyRole('PROFESSOR', 'ANALISTA_DE_QUALIDADE', 'COORDENADOR', 'PROFESSOR_ADMINISTRATIVO')")
+    @PreAuthorize("hasAnyRole('ANALISTA_DE_QUALIDADE', 'COORDENADOR')")
     public ResponseEntity<DadosDetalhamentoOcorrencia> detalhar(
             @PathVariable Long id) {
         return ResponseEntity.ok(service.detalharOcorrencia(id));
@@ -66,7 +66,7 @@ public class OcorrenciaController implements ModelDomainController<
 
     @Override
     @PutMapping
-    @PreAuthorize("hasAnyRole('PROFESSOR', 'ANALISTA_DE_QUALIDADE', 'COORDENADOR', 'PROFESSOR_ADMINISTRATIVO')")
+    @PreAuthorize("hasRole('PROFESSOR')")
     public ResponseEntity<DadosDetalhamentoOcorrencia> atualizar(
             @RequestBody @Valid DadosAtualizacaoOcorrencia dados) {
         return ResponseEntity.ok(service.atualizarOcorrencia(dados));
@@ -74,7 +74,7 @@ public class OcorrenciaController implements ModelDomainController<
 
     @Override
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAnyRole('PROFESSOR', 'ANALISTA_DE_QUALIDADE', 'COORDENADOR', 'PROFESSOR_ADMINISTRATIVO')")
+    @PreAuthorize("hasAnyRole('ANALISTA_DE_QUALIDADE', 'COORDENADOR')")
     public ResponseEntity<Void> excluir(@PathVariable Long id) {
         service.excluirOcorrencia(id);
         return ResponseEntity.noContent().build();

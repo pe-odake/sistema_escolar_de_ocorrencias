@@ -13,7 +13,7 @@ public class UsuarioMapper {
                 null,
                 dados.nome(),
                 dados.login(),
-                dados.senha(),
+                dados.senha(), // AQUI
                 true,
                 dados.perfil()
         );
