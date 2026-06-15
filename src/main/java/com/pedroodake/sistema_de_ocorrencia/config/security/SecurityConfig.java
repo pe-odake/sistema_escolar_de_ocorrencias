@@ -27,7 +27,7 @@ public class SecurityConfig {
     @Autowired
     private SecurityFilter securityFilter;
 
-    @Value("${app.cors.allowed-origins")
+    @Value("${app.cors.allowed-origins}")
     private String allowedOrigins;
 
     @Bean
